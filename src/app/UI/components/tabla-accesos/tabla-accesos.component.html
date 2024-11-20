@@ -1,0 +1,96 @@
+<div class="table-responsive">
+  <table class="table table-striped" id="tabla_accesos">
+    <thead>
+      <tr>
+        <th class="click clsAnchoCol">
+          No. Registro
+        </th>
+        <th class="click clsAnchoCol" hidden>
+          Identificador
+        <th class="click clsAnchoCol" hidden>
+          AplicativoId
+        </th>
+        <th class="click clsAnchoCol" (click)="sortData('capa')" onkeypress="">
+          Capa&nbsp;<i class="bi bi-arrow-down-up clsSort "></i>
+        </th>
+        <th class="click clsAnchoCol" (click) = "sortData('metodo')" onkeypress="">
+          Método&nbsp;<i class="bi bi-arrow-down-up clsSort "></i>
+        </th>
+        <th class="click clsAnchoCol" (click) = "sortData('actividad')" onkeypress="">
+          Actividad&nbsp;<i class="bi bi-arrow-down-up clsSort "></i>
+        </th>
+        <th class="click clsAnchoCol" (click) = "sortData('transaccionId')" onkeypress="">
+          ID Transacción&nbsp;<i class="bi bi-arrow-down-up clsSort "></i>
+        </th>
+        <th class="click clsAnchoCol" (click) = "sortData('ipEquipo')" onkeypress="">
+          Ip Equipo&nbsp;<i class="bi bi-arrow-down-up clsSort "></i>
+        </th>
+        <th class="click clsAnchoCol" (click) = "sortData('fechaHoraAcceso')" onkeypress="">
+          Fecha/Hora Acceso&nbsp;<i class="bi bi-arrow-down-up clsSort "></i>
+        </th>
+        <th class="click clsAnchoCol" (click) = "sortData('usuarioAcceso')" onkeypress="">
+          Usuario&nbsp;<i class="bi bi-arrow-down-up clsSort "></i>
+        </th>
+        <th class="click clsAnchoCol" (click) = "sortData('nombreUsuario')" onkeypress="">
+          Nombre&nbsp;<i class="bi bi-arrow-down-up clsSort "></i>
+        </th>
+        <th class="click clsAnchoCol" (click) = "sortData('expedienteUsuario')" onkeypress="">
+          Expediente&nbsp;<i class="bi bi-arrow-down-up clsSort "></i>
+        </th>
+        <th class="click clsAnchoCol" (click) = "sortData('areaUsuario')" onkeypress="">
+          Área&nbsp;<i class="bi bi-arrow-down-up clsSort "></i>
+        </th>
+        <th class="click clsAnchoCol" (click) = "sortData('puestoUsuario')" onkeypress="">
+          Puesto&nbsp;<i class="bi bi-arrow-down-up clsSort "></i>
+        </th>
+        <th class="click clsAnchoCol" (click) = "sortData('estatusOperacion')" onkeypress="">
+          Estatus operación&nbsp;<i class="bi bi-arrow-down-up clsSort "></i>
+        </th>
+        <th class="click clsAnchoCol" (click) = "sortData('respuestaOperacion')" onkeypress="">
+          Respuesta operación&nbsp;<i class="bi bi-arrow-down-up clsSort "></i>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let fila of filas | paginate: {
+              id: 'paginaAccesos',
+              itemsPerPage: itemsPerPage,
+              currentPage: currentPage,
+              totalItems: totalItems,
+            } | search: searchText; index as i ">
+        <td>
+          {{i + 1}}
+        </td>
+        <td class="hidden">{{fila.identificador}}</td>
+        <td class="hidden">{{fila.aplicativoId}}</td>
+        <td>{{fila.capa}}</td>
+        <td>{{fila.metodo}}</td>
+        <td>{{fila.actividad}}</td>
+        <td>{{fila.transaccionId}}</td>
+        <td>{{fila.ipEquipo}}</td>
+        <td>{{fila.fechaHoraAcceso | date : "YYYY-MM-dd hh:mm:ss"}}</td>
+        <td>{{fila.usuarioAcceso}}</td>
+        <td>{{fila.nombreUsuario}}</td>
+        <td>{{fila.expedienteUsuario}}</td>
+        <td>{{fila.areaUsuario}}</td>
+        <td>{{fila.puestoUsuario}}</td>
+        <td>{{fila.estatusOperacion}}</td>
+        <td>{{fila.respuestaOperacion}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br>
+<div class="clsPaginacion row">
+<div class="col-md-9" style="text-align: center;">
+  <pagination-controls
+  id="paginaAccesos"
+  previousLabel="Anterior"
+  nextLabel="Siguiente"
+  (pageChange)="currentPage = $event">
+  </pagination-controls>
+</div>
+<div class="col-md-3">
+  Total de registros: {{totalItems}}
+</div>
+</div>

@@ -1,0 +1,106 @@
+<div class="row vertical-buffer">
+  <div class="col">
+    <app-breadcrumb></app-breadcrumb>
+    <h3>Aplicaciones</h3>
+    <hr class="red">
+    <app-alertas></app-alertas>
+    <div class="row">
+      <div class="col-md-3">
+        <button class="btn btn-primary btn-sm btnAgregar" type="button" data-toggle="modal" data-target="#foo" [disabled]="isDisabled">
+          <span class="bootstrap-icons" aria-hidden="true"><img src="../../../../assets/images/plus-circle-fill.png"
+              alt="" /></span>
+          Agregar Aplicación</button>
+      </div>
+      <div class="col-md-4">
+        <input type="text" class="form-control" placeholder="Buscar" id="table-filtering-search"
+          [(ngModel)]="searchText">
+        <span class="bootstrap-icons" aria-hidden="true" id="icon"><i class="bi bi-search"></i></span>
+      </div>
+      <div class="col-md-4 divCls">
+        <label for="">Registros por página</label>
+      </div>
+      <div class="col-md-1">
+        <select class="form-control" (change)="onChange($event)">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="50">50</option>
+        </select>
+      </div>
+
+    </div>
+    <div class="row top-buffer">
+      <div class="col-md-12">
+        <table class="table table-striped" id="tabla_accesos">
+          <thead>
+            <tr>
+              <th class="click clsAnchoCol">
+                No. Registro
+              </th>
+              <th class="click clsAnchoCol" (click)="sortData('aplicativoId')" onkeypress="">
+                Aplicativo/Alias&nbsp;<i class="bi bi-arrow-down-up clsSort "></i>
+              </th>
+              <th class="click clsAnchoCol" (click)="sortData('nombre')" onkeypress="">
+                Nombre completo&nbsp;<i class="bi bi-arrow-down-up clsSort "></i>
+              </th>
+              <th *ngIf="rol === 'ADMINISTRADOR' || rol === 'ADMIN'">Editar Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let fila of paginatedAplicaciones | paginate: {
+              id: 'paginaAplicaciones',
+              itemsPerPage: itemsPerPage,
+              currentPage: currentPage,
+              totalItems: totalAplicaciones,
+            } | search: searchText; index as i">
+              <td>
+                {{i + 1}}
+              </td>
+              <td>{{fila.aplicativoId}}
+              </td>
+              <td>
+                <span *ngIf="!fila.editable">{{fila.nombre}}</span>
+                <input type="text" class="form-control" [(ngModel)]="fila.nombre" *ngIf="fila.editable" />
+              </td>
+              <td *ngIf="rol === 'ADMINISTRADOR' || rol === 'ADMIN'">
+                <!-- Call to action buttons -->
+                <ul class="list-inline m-0">
+                  <li class="list-inline-item">
+                    <a class="nav-link"><img src='{{"assets/images/pencil-square.png"}}' alt="" (click)="editar(fila)"
+                        onkeypress="" *ngIf="!fila.editable" data-placement="top" title="Editar"></a>
+                    <a class="nav-link"><img src='{{"assets/images/floppy.png"}}' alt="" (click)="salvar(fila)"
+                        onkeypress="" *ngIf="fila.editable" data-placement="top" title="Salvar"></a>
+                    <a class="nav-link"><img src='{{"assets/images/x-square.png"}}' alt="" (click)="cancelar(fila)"
+                        onkeypress="" *ngIf="fila.editable" data-placement="top" title="Cancelar"></a>
+                  </li>
+                  <li class="list-inline-item" data-placement="top" title="Eliminar" (click)="deleteRow(fila)"
+                    onkeypress="">
+                    <a class="nav-link"><img src='{{"assets/images/trash3.png"}}' alt=""></a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <div class="clsPaginacion row">
+          <div class="col-md-9" style="text-align: center;">
+            <pagination-controls id="paginaAplicaciones" previousLabel="Anterior" nextLabel="Siguiente"
+              (pageChange)="currentPage = $event">
+            </pagination-controls>
+          </div>
+          <div class="col-md-3">
+            Total de registros: {{totalAplicaciones}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<app-agregar-aplicacion [titulo]="tituloAgregar" (textoEmitido)="actualizar($event)"></app-agregar-aplicacion>
+<app-modal-elimina-aplicacion [titulo]="tituloEliminar" [contenido]="contenido" [titleButtonPrimary]="buttonPrimary"
+  [titleButtonSecondary]="buttonSecondary" (propagar)="eliminaAplicacion($event);">
+</app-modal-elimina-aplicacion>
+
+<app-time-out></app-time-out>

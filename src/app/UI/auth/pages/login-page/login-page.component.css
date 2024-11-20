@@ -1,0 +1,78 @@
+.divLogin {
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  display:inline-block;
+  float:none;
+  text-align:left;
+  margin-right:-4px;
+  width: 492px;
+  height: 100%;
+  padding: 15px;
+  background-color: #245B4E;
+  color: #ffffff;
+  padding-top: 80px;
+}
+
+.divBtn {
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.divImg {
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-bottom: 30px;
+}
+
+.contenedor {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.container-fluid {
+    background-image: url("./../../../../../assets/images/img-bitacora.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+.btnLink {
+    margin-left: 75px;
+}
+
+.alert {
+    width: auto;
+    padding: 0;
+    margin-bottom: -20px;
+}
+
+.alerta {
+    color: #ffffff;
+}
+
+
+dialog {
+  background-color: rgba(32, 82, 221, 0.5);
+  color: white;
+  border-color: transparent;
+  overflow: hidden;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 0 20px 8px #d0d0d0;
+  height: 100px;
+  width: 200px;
+}

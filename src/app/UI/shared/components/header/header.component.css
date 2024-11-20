@@ -1,0 +1,34 @@
+#header {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  height: auto;
+  width: 100%;
+  z-index: 5 !important;
+  background: transparent url('./../../../../../assets/images/Rectangulo_2.png');
+  opacity: 1;
+}
+
+.header-bitacora {
+  top: 21px;
+}
+
+h5 {
+    color: #ffffff;
+}
+
+.divTitle {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    height: 60px;
+    left: 4.5%;
+}
+
+.divImage {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    height: 60px;
+    right: 4.5%;
+}

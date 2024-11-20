@@ -1,0 +1,66 @@
+.table {
+    font-size: 14px;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+
+
+/* El icono debe ser "position: absolute"
+   * Ademas le damos un "display: block" y lo posicionamos */
+
+#icon {
+    position: absolute;
+    display: block;
+    bottom: .3rem;
+    right: 3rem;
+    user-select: none;
+    cursor: pointer;
+}
+
+input.input {
+    padding-right: 2.5rem;
+
+}
+
+.divCls {
+    display: flex;
+    align-items: end;
+    justify-content: end;
+}
+
+li a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 14px;
+}
+
+.clsSort {
+    font-size: 10px;
+}
+
+.btnEstado {
+    color: #ffffff;
+    border: 0;
+}
+
+
+.user-nav {
+    display: block;
+}
+
+.button-search {
+  margin-left: -9%;
+}
+
+.btnAgregar:hover span img{
+  background-image: url('./../../../../assets/images/plus-circle-outfill.png');
+  z-index: 9;
+}
+
+td .hidden{
+  display:none;
+  visibility:hidden;
+}
+
+
+

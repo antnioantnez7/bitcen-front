@@ -1,0 +1,96 @@
+.historico {
+    font-size: 13px;
+    margin-left: -11%;
+}
+
+.export-excel {
+    display: flex;
+    justify-content: end;
+}
+
+.form-bitacora {
+    margin-top: 10%;
+}
+
+.alert-bitacora {
+    margin-top: -5%;
+    margin-bottom: -14%;
+}
+
+.form-filter {
+    margin-bottom: 5%;
+}
+
+.tab-icon {
+    margin-left: 9px;
+}
+
+.button-search {
+    margin-left: -9%;
+}
+
+.button-clean {
+    margin-left: -2%;
+}
+
+
+
+.margin-search {
+    margin-left: 91%;
+    margin-top: -13%;
+}
+
+.margin-search-input {
+    margin-left: 11%;
+}
+
+img {
+    width: 15px;
+    height: 16px;
+}
+
+.register-page {
+    display: flex;
+    justify-content: end;
+    margin-left: 8%;
+    margin-top: 7px;
+}
+
+.order-page {
+    display: flex;
+    justify-content: end;
+    margin-left: 0%;
+}
+
+.alerta {
+    color: #D0021B;
+}
+
+#icon{
+  position: absolute;
+  display: block;
+  bottom: .3rem;
+  right: 3rem;
+  user-select: none;
+  cursor: pointer;
+}
+
+.clsBuscar{
+  display: flex;
+  justify-content: end;
+}
+
+
+
+.clsBtnExcel1:hover span img{
+  z-index: 9px;
+  background-image: url('./../../../../assets/images/file-earmark-spreadsheet.png');
+}
+
+.clsBtnExcel2:hover span img{
+  z-index: 9px;
+  background-image: url('./../../../../assets/images/exportar_todo.png');
+}
+
+
+

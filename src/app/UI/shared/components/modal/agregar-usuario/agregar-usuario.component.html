@@ -1,0 +1,56 @@
+<div class="modal" id="foo" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><strong>{{titulo}}</strong></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <hr class="no-space"/>
+        <p>Ingrese los datos del Usuario</p>
+        <form [formGroup]="usuarioForm">
+        <div class="form-group">
+          <label class="control-label" for="usuario" data-toggle="tooltip" data-placement="top"
+            title="Usuario">Usuario<span class="alerta">*</span>:</label>
+          <input class="form-control" id="alias" placeholder="Usuario" type="text"
+          formControlName="usuario" maxlength="50">
+          <span *ngIf="this.usuarioForm.get('usuario')?.errors?.['required']" class="alerta">
+            Campo obligatorio
+          </span>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="nombre" data-toggle="tooltip" data-placement="top"
+            title="Nombre">Nombre<span class="alerta">*</span>:</label>
+          <input class="form-control" rows="3" placeholder="Nombre" formControlName="nombre" id="nombre" maxlength="100">
+          <span *ngIf="this.usuarioForm.get('nombre')?.errors?.['required']" class="alerta">
+            Campo obligatorio
+          </span>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="paterno" data-toggle="tooltip" data-placement="top"
+            title="Paterno">Apellido Paterno<span class="alerta">*</span>:</label>
+          <input class="form-control" rows="3" placeholder="Nombre" formControlName="paterno" id="paterno" maxlength="100">
+          <span *ngIf="this.usuarioForm.get('paterno')?.errors?.['required']" class="alerta">
+            Campo obligatorio
+          </span>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="materno" data-toggle="tooltip" data-placement="top"
+            title="Materno">Apellido Materno<span class="alerta">*</span>:</label>
+          <input class="form-control" rows="3" placeholder="Materno" formControlName="materno" id="materno" maxlength="100">
+          <span *ngIf="this.usuarioForm.get('materno')?.errors?.['required']" class="alerta">
+            Campo obligatorio
+          </span>
+        </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" #btnCloseModal>Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="agregaUsuario()">Agregar</button>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,39 @@
+<div class="modal" id="foo" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><strong>{{titulo}}</strong></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <hr class="no-space"/>
+        <p>Ingrese los datos de la nueva Aplicación</p>
+        <form [formGroup]="aplicacionForm">
+        <div class="form-group">
+          <label class="control-label" for="alias" data-toggle="tooltip" data-placement="top"
+            title="Nombre de la aplicación">Alias<span class="alerta">*</span>:</label>
+          <input class="form-control" id="alias" placeholder="Nombre corto o alias" type="text" maxlength="10"
+          formControlName="alias" oninput="this.value = this.value.toUpperCase()" >
+          <span *ngIf="this.aplicacionForm.get('alias')?.errors?.['required']" class="alerta">
+            Campo obligatorio
+          </span>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="nombreCompleto" data-toggle="tooltip" data-placement="top"
+            title="Nombre de la aplicación">Nombre completo<span class="alerta">*</span>:</label>
+          <textarea class="form-control" rows="2" placeholder="Nombre completo" formControlName="nombreCompleto" id="nombreCompleto"></textarea>
+          <span *ngIf="this.aplicacionForm.get('nombreCompleto')?.errors?.['required']" class="alerta">
+            Campo obligatorio
+          </span>
+        </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" #btnCloseModal>Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="agregaAplicacion()">Agregar</button>
+      </div>
+    </div>
+  </div>
+</div>

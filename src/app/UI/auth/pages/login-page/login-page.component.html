@@ -1,0 +1,55 @@
+<div class="container-fluid">
+  <div class="row contenedor">
+    <div class="col-md-7"></div>
+    <div class="col-md-4 divLogin">
+      <div class="divImg">
+        <a><img src='{{ "assets/images/Grupo19184.png" }}' alt=""></a>
+      </div>
+      <div class="text-left">
+        <h6 style="font-weight: lighter;">SECRETARÍA DE HACIENDA Y CRÉDITO PÚBLICO</h6>
+      </div>
+
+      <div class="text-left">
+        <h6>BANCO NACIONAL DE OBRAS Y SERVICIOS PÚBLICOS S.N.C. </h6>
+      </div>
+      <div class="alert">
+        <app-alertas></app-alertas>
+      </div>
+      <br>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label class="control-label" for="usuario" data-toggle="tooltip" data-placement="top"
+            title="Ingresar usuario">Usuario: <span class="alerta">*</span></label>
+          <input class="form-control" id="usuario" placeholder="Ingresa tu usuario" type="text"
+            formControlName="usuario">
+          <span *ngIf="this.loginForm.get('usuario')?.errors?.['required']" class="alerta">
+            Campo obligatorio
+          </span>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="password" data-toggle="tooltip" title="Ingresar password">Contraseña:
+            <span class="alerta">*</span></label>
+          <input class="form-control" id="password" placeholder="Ingresa tu contraseña" type="password"
+            formControlName="password">
+          <span *ngIf="this.loginForm.get('password')?.errors?.['required']" class="alerta">
+            Campo obligatorio
+          </span>
+        </div>
+        <div class="form-inline">
+        </div>
+        <div class="form-group">
+          <div class="divBtn">
+            <button class="btn btn-primary" type="submit" title="Guardar formulario">Iniciar sesión</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div></div>
+  </div>
+</div>
+
+<button id="id01" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#rolesModal"></button>
+<app-modal-roles [titulo]="tituloModalRol" [rolesUsuario]="userRoles"></app-modal-roles>
+
+<button id="id02" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modal-sesion"></button>
+<app-modal-sesion [titulo]="tituloModalSesion" [contenido]="contenidoSesion"></app-modal-sesion>

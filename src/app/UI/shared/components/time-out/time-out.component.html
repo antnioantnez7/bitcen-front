@@ -1,0 +1,23 @@
+<!-- ?Modal logout warning -->
+<div #myModal class="modal fade" id="exampleModalCenter" tabindex="-1"  data-backdrop="static"
+  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Inactividad</h5>
+      </div>
+      <div class="modal-body">
+        Por seguridad la aplicacion será cerrada.
+        <br>
+        <div class="progress"  aria-label="Default striped example" aria-valuenow="10"
+          aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-bar progress-bar-striped" style="width: {{progressValue}}%;"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="mantenerSesion()" class="btn btn-primary">Permanecer aquí</button>
+      </div>
+    </div>
+  </div>
+</div>
+

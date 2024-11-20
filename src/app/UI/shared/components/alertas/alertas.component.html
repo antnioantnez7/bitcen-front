@@ -1,0 +1,5 @@
+<div *ngFor="let alerta of alertas" class="{{ cssClass(alerta) }} alert-dismissable">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <b>{{alerta.texto}}</b> {{alerta.message}}
+</div>
+

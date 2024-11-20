@@ -1,0 +1,18 @@
+<div class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1"
+aria-labelledby="staticBackdropLabel" aria-hidden="true" id="modal-elimina-aplicacion">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header" style="justify-content: center;">
+        <h4 class="modal-title">{{titulo}}</h4>
+      </div>
+      <div class="modal-body" style="text-align: center;">
+      <img [src]="'./../../../../../assets/images/svg/warning.svg'" alt="Icon"><br><br>
+        <p>{{contenido}}</p>
+      </div>
+      <div class="modal-footer" [ngClass]="{ 'buttonCenter': isHidden }">
+        <button #btnCloseModal type="button" class="btn btn-secondary" data-dismiss="modal" [hidden]="isHidden">{{titleButtonSecondary}}</button>
+        <button type="button" class="btn btn-primary" (click)="EventDoIt();">{{titleButtonPrimary}}</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

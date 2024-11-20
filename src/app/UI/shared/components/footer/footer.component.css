@@ -1,0 +1,21 @@
+#footer {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+  height: 75px;
+  z-index: 5 !important;
+  background: transparent url('./../../../../../assets/images/Footer.png');
+  margin-top: auto;
+  padding: 1em 0;
+}
+
+.imgFooter {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  height: 60px;
+  padding-left: 60px;
+  padding-bottom: 30px;
+}
+

@@ -1,0 +1,52 @@
+.table {
+    font-size: 14px;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+
+
+/* El icono debe ser "position: absolute"
+   * Ademas le damos un "display: block" y lo posicionamos */
+
+#icon {
+    position: absolute;
+    display: block;
+    bottom: .3rem;
+    right: 3rem;
+    user-select: none;
+    cursor: pointer;
+}
+
+input.input {
+    padding-right: 2.5rem;
+}
+
+.divCls {
+    padding: 5px;
+    font-size: 16px;
+}
+
+li a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 14px;
+}
+
+.clsSort {
+    font-size: 10px;
+}
+
+.btnEstado {
+    color: #ffffff;
+    border: 0;
+}
+
+
+.clsPaginacion {
+  display: block;
+}
+
+td .hidden{
+  display:none;
+  visibility:hidden;
+}

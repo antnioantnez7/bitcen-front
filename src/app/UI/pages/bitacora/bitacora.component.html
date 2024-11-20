@@ -1,0 +1,168 @@
+<div class="row vertical-buffer">
+  <div class="col">
+    <app-breadcrumb></app-breadcrumb>
+    <h3>Consulta de Bitácora</h3>
+    <hr class="red">
+    <div class="alert alert-bitacora">
+      <app-alertas></app-alertas>
+    </div>
+    <br />
+    <div class="form-filter">
+      <div class="form-bitacora">
+        <form [formGroup]="bitacoraForm">
+          <div class="row">
+            <div class="col-md-3">
+              <label class="control-label" for="aplicacion">Aplicación<span class="alerta">*</span>:</label>
+              <select class='form-control' (ngModelChange)="onAplicacionChanged($event)" formControlName="aplicacion">
+                <option [ngValue]="null" disabled>Seleccionar aplicativo...</option>
+                <option *ngFor="let data of aplicacionUsuario" [ngValue]="data">
+                  {{ data }}
+                </option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group datepicker-group">
+                <label class="control-label" for="FechaInicio">Fecha Inicio<span class="alerta">*</span>:</label>
+                <input class="form-control" appDatePickerStart (dateEventEmitter)="getDateStart($event)" type="text"
+                  formControlName="fechaInicio" id="fechaInicio">
+                <span class="bootstrap-icons" aria-hidden="true"><img src="../../../../assets/images/calendar2-week.svg"
+                    alt="" /></span>
+                <span *ngIf="this.bitacoraForm.get('fechaInicio')?.errors?.['required']" class="alerta">
+                  Campo obligatorio
+                </span>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group datepicker-group">
+                <label class="control-label" for="fechaFin">Fecha Fin<span class="alerta">*</span>:</label>
+                <input class="form-control" appDatePickerEnd (dateEventEmitter)="getDateEnd($event)" type="text"
+                  formControlName="fechaFin" id="fechaFin">
+                <span class="bootstrap-icons" aria-hidden="true"><img src="../../../../assets/images/calendar2-week.svg"
+                    alt="" /></span>
+                <span *ngIf="this.bitacoraForm.get('fechaFin')?.errors?.['required']" class="alerta">
+                  Campo obligatorio
+                </span>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <br>
+                <button type="button" class="btn btn-primary" (click)="onsubmit()">Buscar</button>&nbsp;&nbsp;
+                <button type="button" class="btn btn-primary" (click)="clearControl()">Limpiar</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 clsBuscar">
+        <button class="btn btn-sm btn-secondary clsBtnExcel2" type="button" (click)="downloadFileAll()">
+          <span class="bootstrap-icons" aria-hidden="true">
+            <img class="img-icons" src="../../../../assets/images/9080861_file_export_icon.svg" alt="" />
+          </span>
+          Exportar todo
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <a class="nav-link active" id="nav-tab-01" data-toggle="tab" href="#nav-01" role="tab" aria-controls="nav-01"
+            aria-selected="true" (click)="getTab(1)">
+            Usuarios<span class="bootstrap-icons tab-icon" aria-hidden="true">
+              <ng-container>
+                @if(selectTab === undefined || selectTab === 1 ){
+                <img src="../../../../assets/images/people01.png" alt=""  />
+                }@else {<img src="../../../../assets/images/people02.png" alt="" />}
+              </ng-container>
+            </span>
+          </a>
+          <a class="nav-link" id="nav-tab-02" data-toggle="tab" href="#nav-02" role="tab" aria-controls="nav-02"
+            aria-selected="true" (click)="getTab(2)">
+            Perfiles<span class="bootstrap-icons tab-icon" aria-hidden="true">
+              <ng-container>
+                @if(selectTab === 2 ){
+                <img src="../../../../assets/images/lock-1.png" alt=""  />
+                }@else {<img src="../../../../assets/images/lock.png" alt="" />}
+              </ng-container>
+            </span>
+          </a>
+          <a class="nav-link" id="nav-tab-03" data-toggle="tab" href="#nav-03" role="tab" aria-controls="nav-03"
+          aria-selected="false" (click)="getTab(3)">
+          Accesos<span class="bootstrap-icons tab-icon" aria-hidden="true">
+            <ng-container>
+              @if(selectTab === 3){
+              <img src="../../../../assets/images/2305594_access_key_password_privacy_security_icon.png" alt="" />
+              }@else {<img src="../../../../assets/images/2305594_access_key_password_privacy_security_icon@2x.png"
+                alt="" />}
+            </ng-container></span>
+        </a>
+          <a class="nav-link" id="nav-tab-04" data-toggle="tab" href="#nav-04" role="tab" aria-controls="nav-04"
+            aria-selected="false" (click)="getTab(4)">Operaciones
+            <span class="bootstrap-icons tab-icon" aria-hidden="true"><ng-container>
+                @if(selectTab === 4){
+                <img src="../../../../assets/images/4177548_ecommerce_shop_transaction_icon.png" alt="" />
+                }@else {<img src="../../../../assets/images/4177548_ecommerce_shop_transaction_icon@2x.png" alt="" />}
+              </ng-container>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="row">
+        <div class="col-md-3">
+          <button class="btn btn-sm btn-secondary clsBtnExcel1" (click)="downloadFile()" type="button">
+            <span class="bootstrap-icons" aria-hidden="true"><img class="clsExcel1"
+                src="../../../../assets/images/file-earmark-spreadsheet.svg" alt="" /></span>
+            Exportar a Excel</button>
+        </div>
+        <div class="col-md-4">
+          <input type="text" class="form-control" placeholder="Buscar" id="table-filtering-search"
+            [(ngModel)]="searchText">
+          <span class="bootstrap-icons" aria-hidden="true" id="icon"><i class="bi bi-search"></i></span>
+        </div>
+        <div class="col-md-4">
+
+          <div class="register-page">Registros por página</div>
+        </div>
+        <div class="col-md-1">
+          <select class="form-control" (change)="onChange($event)">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="50">50</option>
+          </select>
+        </div>
+      </div>
+      <div class="tab-pane fade show active" id="nav-01" role="tabpanel" aria-labelledby="nav-tab-01">
+        <app-tabla-usuarios [titulos]="" [filas]="valoresListUsuarios" [exportFile]="" [totalItems]="totalUsuarios"
+          [searchText]="searchText" [itemsPerPage]="itemsPerPage"></app-tabla-usuarios>
+        <div style="text-align: center;">
+        </div>
+      </div>
+      <div class="tab-pane fade" id="nav-02" role="tabpanel" aria-labelledby="nav-tab-02">
+        <app-tabla-perfiles [titulos]="" [filas]="valoresListPerfiles" [exportFile]="" [totalItems]="totalPerfiles"
+          [searchText]="searchText" [itemsPerPage]="itemsPerPage"></app-tabla-perfiles>
+        <div style="text-align: center;">
+        </div>
+      </div>
+      <div class="tab-pane fade" id="nav-03" role="tabpanel" aria-labelledby="nav-tab-03">
+        <app-tabla-accesos [titulos]="" [filas]="valoresListAccesos" [exportFile]="" [totalItems]="totalAccesos"
+          [searchText]="searchText" [itemsPerPage]="itemsPerPage"></app-tabla-accesos>
+        <div style="text-align: center;">
+        </div>
+      </div>
+      <div class="tab-pane fade" id="nav-04" role="tabpanel" aria-labelledby="nav-tab-04">
+        <app-tabla-transacciones [titulos]="" [filas]="valoresListOperaciones" [exportFile]=""
+          [totalItems]="totalOperaciones" [searchText]="searchText"
+          [itemsPerPage]="itemsPerPage"></app-tabla-transacciones>
+        <div style="text-align: center;">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<app-time-out></app-time-out>
+<app-spinner *ngIf="isLoading"></app-spinner>

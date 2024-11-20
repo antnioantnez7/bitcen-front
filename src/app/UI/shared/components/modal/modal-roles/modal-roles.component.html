@@ -1,0 +1,27 @@
+<dialog class="modal fade" id="rolesModal" data-backdrop="static" #modalRoles>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header" style="justify-content: center;">
+        <h4 class="modal-title">{{titulo}}</h4>
+      </div>
+      <div class="modal-body">
+        <p>Seleccione el Rol con el que ingresará a la Aplicación</p>
+        <form [formGroup]="rolForm">
+        <div class="form-group">
+          <label class="control-label" for="aplicacion">Rol<span class="alerta">*</span>:</label>
+              <select class='form-control' (ngModelChange)="onRolChanged($event)" formControlName="aplicacion">
+                <option [ngValue]="null" disabled>Seleccionar rol...</option>
+                <option *ngFor="let data of rolesUsuario" [ngValue]="data">
+                  {{ data }}
+                </option>
+              </select>
+        </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" #btnCloseModal>Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="seleccionarRol()">Seleccionar</button>
+      </div>
+    </div>
+  </div>
+</dialog>

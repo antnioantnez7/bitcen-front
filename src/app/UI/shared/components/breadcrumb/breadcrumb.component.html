@@ -1,0 +1,8 @@
+<ol class="breadcrumb">
+  <li><a href="/bitacora"><i class="bi bi-house-door-fill"></i></a></li>
+  <li *ngFor="let breadcrumb of breadcrumbs; let i = index">
+    <a *ngIf="breadcrumb.activo" [routerLink]="breadcrumb.url" >{{ breadcrumb.label }}</a>
+    <a *ngIf="!breadcrumb.activo" [routerLink]="breadcrumb.url" class="disabled">{{ breadcrumb.label }}</a>
+  </li>
+</ol>
+

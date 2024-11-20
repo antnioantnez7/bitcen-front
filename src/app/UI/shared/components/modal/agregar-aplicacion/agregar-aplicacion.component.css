@@ -1,0 +1,36 @@
+.modal-header {
+    background-color: white;
+    padding: 40px 40px 0px 40px;
+
+}
+
+.modal-title {
+    color: black;
+}
+
+.modal-body{
+  padding-top: 0;
+}
+
+.alerta {
+  color: #D0021B;
+}
+
+.alert-bitacora {
+  margin-top: -5%;
+  margin-bottom: -14%;
+}
+
+
+hr.no-space {
+  margin-top: 10px;
+  border-top: 1px solid #000000;
+}
+
+
+
+
+
+
+
+

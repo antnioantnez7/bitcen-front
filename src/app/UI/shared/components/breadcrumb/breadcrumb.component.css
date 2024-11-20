@@ -1,0 +1,4 @@
+a.disabled {
+  cursor: not-allowed;
+  text-decoration: none;
+}

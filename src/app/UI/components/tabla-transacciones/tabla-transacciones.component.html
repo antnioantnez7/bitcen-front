@@ -1,0 +1,105 @@
+<div class="table-responsive">
+  <table class="table table-striped" id="tabla_operaciones">
+    <thead>
+      <tr>
+        <th class="click clsAnchoCol">
+          No. Registro
+       </th>
+        <th class="click clsAnchoCol" hidden>
+          Identificador
+        </th>
+        <th class="click clsAnchoCol" hidden>
+          AplicativoId
+        </th>
+        <th class="click clsAnchoCol" (click)="sortData('capa')" onkeypress="">
+          Capa&nbsp;<i class="bi bi-arrow-down-up clsSort "></i>
+        </th>
+        <th class="click clsAnchoCol" (click)="sortData('metodo')" onkeypress="">
+          Método&nbsp;<i class="bi bi-arrow-down-up clsSort "></i>
+        </th>
+        <th class="click clsAnchoCol" (click)="sortData('proceso')" onkeypress="">
+          Proceso&nbsp;<i class="bi bi-arrow-down-up clsSort "></i>
+        </th>
+        <th class="click clsAnchoCol" (click)="sortData('subproceso')" onkeypress="">
+          Subproceso&nbsp;<i class="bi bi-arrow-down-up clsSort "></i>
+        </th>
+        <th class="click clsAnchoCol" (click)="sortData('detalleOperacion')" onkeypress="">
+          Detalle operación&nbsp;<i class="bi bi-arrow-down-up clsSort "></i>
+        </th>
+        <th class="click clsAnchoCol" (click)="sortData('transaccionId')" onkeypress="">
+          ID Transacción&nbsp;<i class="bi bi-arrow-down-up clsSort "></i>
+        </th>
+        <th class="click clsAnchoCol" (click)="sortData('ipEquipo')" onkeypress="">
+          Ip Equipo&nbsp;<i class="bi bi-arrow-down-up clsSort "></i>
+        </th>
+        <th class="click clsAnchoCol" (click)="sortData('fechaHoraTransaccion')" onkeypress="">
+          Fecha/Hora operación&nbsp;<i class="bi bi-arrow-down-up clsSort "></i>
+        </th>
+        <th class="click clsAnchoCol" (click)="sortData('usuarioOperador')" onkeypress="">
+          Operador&nbsp;<i class="bi bi-arrow-down-up clsSort "></i>
+        </th>
+        <th class="click clsAnchoCol" (click)="sortData('nombreOperador')" onkeypress="">
+          Nombre&nbsp;<i class="bi bi-arrow-down-up clsSort "></i>
+        </th>
+        <th class="click clsAnchoCol" (click)="sortData('expedienteOperador')" onkeypress="">
+          Expediente&nbsp;<i class="bi bi-arrow-down-up clsSort "></i>
+        </th>
+        <th class="click clsAnchoCol" (click)="sortData('areaOperador')" onkeypress="">
+          Área&nbsp;<i class="bi bi-arrow-down-up clsSort "></i>
+        </th>
+        <th class="click clsAnchoCol" (click)="sortData('puestoOperador')" onkeypress="">
+          Puesto&nbsp;<i class="bi bi-arrow-down-up clsSort "></i>
+        </th>
+        <th class="click clsAnchoCol" (click)="sortData('estatusOperacion')" onkeypress="">
+          Estatus operación&nbsp;<i class="bi bi-arrow-down-up clsSort "></i>
+        </th>
+        <th class="click clsAnchoCol" (click)="sortData('respuestaOperacion')" onkeypress="">
+          Respuesta operación&nbsp;<i class="bi bi-arrow-down-up clsSort "></i>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let fila of filas | paginate: {
+              id: 'paginaOperaciones',
+              itemsPerPage: itemsPerPage,
+              currentPage: currentPage,
+              totalItems: totalItems,
+            }| search: searchText; index as i">
+        <td>
+          {{i + 1}}
+      </td>
+        <td class="hidden">{{fila.identificador}}</td>
+        <td class="hidden">{{fila.aplicativoId}}</td>
+        <td>{{fila.capa}}</td>
+        <td>{{fila.metodo}}</td>
+        <td>{{fila.proceso}}</td>
+        <td>{{fila.subproceso}}</td>
+        <td>{{fila.detalleOperacion}}</td>
+        <td>{{fila.transaccionId}}</td>
+        <td>{{fila.ipEquipo}}</td>
+        <td>{{fila.fechaHoraTransaccion | date : "YYYY-MM-dd hh:mm:ss"}}</td>
+        <td>{{fila.usuarioOperador}}</td>
+        <td>{{fila.nombreOperador}}</td>
+        <td>{{fila.expedienteOperador}}</td>
+        <td>{{fila.areaOperador}}</td>
+        <td>{{fila.puestoOperador}}</td>
+        <td>{{fila.estatusOperacion}}</td>
+        <td>{{fila.respuestaOperacion}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br>
+<div class="clsPaginacion">
+  <div class="col-md-9" style="text-align: center;">
+  <pagination-controls
+  id= "paginaOperaciones"
+  previousLabel="Anterior"
+  nextLabel="Siguiente"
+  (pageChange)="currentPage = $event">
+  </pagination-controls>
+</div>
+<div class="col-md-3">
+  Total de registros: {{totalItems}}
+</div>
+</div>
