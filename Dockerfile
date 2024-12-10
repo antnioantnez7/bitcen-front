@@ -22,6 +22,10 @@ COPY --from=build /app/dist/bitacora-banobras/browser /usr/share/nginx/html
 
 COPY ./src/assets/env.template.js /usr/share/nginx/html/assets/env.template.js
 
+# Asegúrate de que el directorio tenga los permisos adecuados
+RUN chmod -R 755 /usr/share/nginx/html/assets && \
+    chown -R nginx:nginx /usr/share/nginx/html/assets
+    
 CMD ["/bin/sh", "-c", "envsubst < /usr/share/nginx/html/assets/env.template.js > /usr/share/nginx/html/assets/env.js && exec nginx -g 'daemon off;'"]
 
 # Copia la configuración de Nginx
