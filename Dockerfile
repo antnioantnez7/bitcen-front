@@ -21,8 +21,15 @@ FROM nginx:alpine
 COPY --from=build /app/dist/bitacora-banobras/browser /usr/share/nginx/html
 
 COPY ./src/assets/env.template.js /usr/share/nginx/html/assets/env.template.js
-USER root
-CMD ["/bin/sh", "-c", "envsubst < /usr/share/nginx/html/assets/env.template.js > /usr/share/nginx/html/assets/env.js && exec nginx -g 'daemon off;'"]
+
+#CMD ["/bin/sh", "-c", "envsubst < /usr/share/nginx/html/assets/env.template.js > /usr/share/nginx/html/assets/env.js && exec nginx -g 'daemon off;'"]
+# Establecer permisos correctos
+chmod -R 755 /usr/share/nginx/html/assets
+chown -R nginx:nginx /usr/share/nginx/html/assets
+
+# Ejecutar el comando original
+envsubst < /usr/share/nginx/html/assets/env.template.js > /usr/share/nginx/html/assets/env.js
+exec nginx -g 'daemon off;'
 
 # Copia la configuración de Nginx
 COPY --from=build /app/nginx.conf /etc/nginx/nginx.conf
