@@ -27,8 +27,8 @@ USER root
 RUN chmod -R 755 /usr/share/nginx/html/assets
 
 CMD ["/bin/sh", "-c", "envsubst < /usr/share/nginx/html/assets/env.template.js > /usr/share/nginx/html/assets/env.js && exec nginx -g 'daemon off;'"]
-
 USER root
+RUN chmod -R 755 /bin/sh
 RUN chmod -R 755 /usr/share/nginx/html/assets
 
 # Copia la configuración de Nginx
