@@ -28,9 +28,6 @@ RUN npm run build --prod
 
 FROM nginx:alpine
 
-# Install gettext for envsubst 
-RUN apk add --no-cache gettext
-
 # Copia los archivos construidos en la etapa anterior al contenedor de Nginx
 COPY --from=build /app/dist/bitacora-banobras/browser /usr/share/nginx/html
 
