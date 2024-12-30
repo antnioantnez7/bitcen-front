@@ -1,5 +1,11 @@
+
+# Usar una imagen base de Node.js para la construcción
 FROM node:18-alpine AS build
 
+# Install gettext to have envsubst available
+RUN apk update && apk add gettext
+
+# Establece el directorio de trabajo
 WORKDIR /app
 
 RUN npm config set registry http://registry.npmjs.org
@@ -13,18 +19,19 @@ RUN npm ci
 
 # Copiamos el resto de los archivos
 COPY . .
-RUN npm run build
+
+COPY ./src /app/src
+COPY ./src/app/scripts/reemplazar-vars.sh ./src/app/scripts/reemplazar-vars.sh
+
+RUN ./src/app/scripts/reemplazar-vars.sh
+RUN npm run build --prod
 
 FROM nginx:alpine
 
 # Copia los archivos construidos en la etapa anterior al contenedor de Nginx
 COPY --from=build /app/dist/bitacora-banobras/browser /usr/share/nginx/html
 
-COPY ./src/assets/env.template.js /usr/share/nginx/html/assets/env.template.js
-
-CMD ["/bin/sh", "-c", "envsubst < /usr/share/nginx/html/assets/env.template.js > /usr/share/nginx/html/assets/env.js && exec nginx -g 'daemon off;'"]
-
-# Copia la configuración de Nginx
-COPY --from=build /app/nginx.conf /etc/nginx/nginx.conf
-
 EXPOSE 80
+
+# Comando para iniciar Nginx
+CMD ["nginx", "-g", "daemon off;"]
