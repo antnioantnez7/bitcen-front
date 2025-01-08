@@ -20,8 +20,12 @@ RUN npm ci
 # Copiamos el resto de los archivos
 COPY . .
 
+RUN chmod +x ./src/app/scripts/reemplazar-vars.sh
+
 COPY ./src /app/src
 COPY ./src/app/scripts/reemplazar-vars.sh ./src/app/scripts/reemplazar-vars.sh
+
+RUN chmod +x ./src/app/scripts/reemplazar-vars.sh
 
 RUN ./src/app/scripts/reemplazar-vars.sh
 RUN npm run build --prod
