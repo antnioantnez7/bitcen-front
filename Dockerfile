@@ -29,8 +29,6 @@ COPY ./src/app/scripts/reemplazar-vars.sh ./src/app/scripts/reemplazar-vars.sh
 
 RUN chmod +x ./src/app/scripts/reemplazar-vars.sh
 
-USER nginx
-
 RUN ./src/app/scripts/reemplazar-vars.sh
 RUN npm run build --prod
 
