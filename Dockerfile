@@ -41,4 +41,4 @@ COPY --from=build /app/dist/bitacora-banobras/browser /usr/share/nginx/html
 EXPOSE 80
 
 # Comando para iniciar Nginx
-CMD ["nginxinc", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
