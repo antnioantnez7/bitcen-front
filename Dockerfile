@@ -20,6 +20,8 @@ RUN npm ci
 # Copiamos el resto de los archivos
 COPY . .
 
+USER root
+
 RUN chmod +x ./src/app/scripts/reemplazar-vars.sh
 
 COPY ./src /app/src
@@ -27,16 +29,15 @@ COPY ./src/app/scripts/reemplazar-vars.sh ./src/app/scripts/reemplazar-vars.sh
 
 RUN chmod +x ./src/app/scripts/reemplazar-vars.sh
 
+USER nginx
+
 RUN ./src/app/scripts/reemplazar-vars.sh
 RUN npm run build --prod
 
 FROM nginx:alpine
-#FROM nginxinc/nginx-unprivileged 
 
 # Copia los archivos construidos en la etapa anterior al contenedor de Nginx
 COPY --from=build /app/dist/bitacora-banobras/browser /usr/share/nginx/html
-RUN cp -r --from=build /app/dist/bitacora-banobras/browser /usr/share/nginx/html
-
 
 EXPOSE 80
 
