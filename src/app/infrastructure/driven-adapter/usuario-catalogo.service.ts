@@ -3,7 +3,7 @@ import { UsuarioCatGateway } from '../../domain/models/gateway/usuariosCat.gatew
 import { Observable } from 'rxjs';
 import { Usuario } from '../../domain/models/usuario';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../enviroments/environment';
+import { environment } from '../../../environments/environment';
 import { DatePipe } from '@angular/common';
 
 @Injectable({

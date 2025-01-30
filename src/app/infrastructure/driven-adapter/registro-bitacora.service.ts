@@ -3,7 +3,7 @@ import { RegistroBitacoraGateway } from '../../domain/models/gateway/registroBit
 import { Observable } from 'rxjs';
 import { BitacoraAcceso } from '../../domain/models/bitacoraAcceso';
 import { BitacoraOperacion } from '../../domain/models/bitacoraOperacion';
-import { environment } from './../../../enviroments/environment';
+import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { BitacoraUsuario } from '../../domain/models/bitacoraUsuario';
@@ -24,7 +24,7 @@ export class RegitroBitacoraService extends RegistroBitacoraGateway {
 
   //Modelo de Bitácora Acceso
   accesos: BitacoraAcceso = {
-    'identificador': environment.BITACORA_identificador,
+    'identificador': Number(environment.BITACORA_identificador),
     'aplicativoId': environment.BITACORA_aplicativoId,
     'capa': environment.BITACORA_capa,
     'metodo': '',
@@ -44,7 +44,7 @@ export class RegitroBitacoraService extends RegistroBitacoraGateway {
 
   //Modelo de Bitácora Operacion
   operaciones: BitacoraOperacion = {
-    'identificador': environment.BITACORA_identificador,
+    'identificador': Number(environment.BITACORA_identificador),
     'aplicativoId': environment.BITACORA_aplicativoId,
     'capa': environment.BITACORA_capa,
     'metodo': '',
@@ -66,7 +66,7 @@ export class RegitroBitacoraService extends RegistroBitacoraGateway {
 
   //Modelo de Bitácora de Usuario
   usuarios: BitacoraUsuario = {
-    'identificador': environment.BITACORA_identificador,
+    'identificador': Number(environment.BITACORA_identificador),
     'aplicativoId': environment.BITACORA_aplicativoId,
     'capa': environment.BITACORA_capa,
     'metodo': "",

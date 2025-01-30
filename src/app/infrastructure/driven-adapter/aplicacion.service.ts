@@ -3,7 +3,7 @@ import { AplicacionCatGateway } from '../../domain/models/gateway/aplicacionCat.
 import { Observable } from 'rxjs';
 import { Aplicacion } from '../../domain/models/aplicacion';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../enviroments/environment';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'

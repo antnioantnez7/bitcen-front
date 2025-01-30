@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { BitacoraAcceso } from '../../domain/models/bitacoraAcceso';
 import { BitacoraOperacion } from '../../domain/models/bitacoraOperacion';
 import { BitacoraUsuario } from '../../domain/models/bitacoraUsuario';
-import { environment } from './../../../enviroments/environment';
+import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { BitacoraPerfiles } from '../../domain/models/bitacoraPerfiles';
 

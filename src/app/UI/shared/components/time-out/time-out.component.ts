@@ -1,11 +1,15 @@
 import { Component, ElementRef, HostListener, inject, ViewChild } from '@angular/core';
 import { UsuarioService } from '../../../../infrastructure/driven-adapter/usuario.service';
 import { v4 as uuid } from 'uuid';
-import { DatePipe } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { Observable } from 'rxjs';
 import { PostTokenUseCase } from '../../../../domain/usercase/login/post-token-use-case';
 import { PostUsuarioSesionUseCase } from '../../../../domain/usercase/login/post-usuario-sesion-use-case';
 import { PostAccesoBitacoraUseCase } from '../../../../domain/usercase/registroBitacora/post-acceso-bitacora-use-case';
+
+
+
+
 declare let $: any;
 
 @Component({
@@ -93,6 +97,7 @@ export class TimeOutComponent {
     clearInterval(this.idSetInterval);
     clearInterval(this.idTimeOut);
     clearTimeout(this.checador);
+
   }
 
   //Guarda la sesión activa del usuario

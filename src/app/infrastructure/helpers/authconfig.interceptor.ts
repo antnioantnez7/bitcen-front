@@ -1,6 +1,6 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 import { catchError, throwError } from 'rxjs';
-import { environment } from '../../../enviroments/environment';
+import { environment } from '../../../environments/environment';
 
 
 export const authconfigInterceptor: HttpInterceptorFn = (req, next) => {

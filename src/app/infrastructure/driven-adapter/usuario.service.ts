@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { UsuarioGateway } from '../../domain/models/gateway/usuario.gateway';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../enviroments/environment';
+import { environment } from '../../../environments/environment';
 import { DatePipe } from '@angular/common';
 
 @Injectable({
